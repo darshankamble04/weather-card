@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Weather Card</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@600;700&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Quicksand', sans-serif;
+        }
+        
+        .wave {
+            position: absolute;
+            margin-left: auto;
+            margin-right: auto;
+            left: 0;
+            right: 0;
+            text-align: center;
+            border-radius: 50%;
+            z-index: 5;
+            left: -65px;
+        }
+        
+        .waves .w0 {
+            /* background-color: rgba(202, 200, 196, 0.33); */
+            /* background-color: red; */
+            width: 554px;
+            height: 524px;
+            top: 45.6%;
+            left: -105px;
+            /* animation: wave3 4000ms infinite linear; */
+        }
+        
+        .waves .w1 {
+            background-color: rgba(255, 174, 0, 0.4);
+            background-color: rgba(216, 215, 215, 0.45);
+            width: 550px;
+            height: 520px;
+            top: 46.6%;
+            left: -103px;
+            animation: wave3 2s infinite linear;
+        }
+        
+        .waves .w2 {
+            background-color: rgba(255, 174, 0, 0.6);
+            background-color: rgba(216, 215, 215, 0.65);
+            width: 543px;
+            height: 515px;
+            top: 48%;
+            left: -100px;
+            animation: wave2 2s infinite linear;
+        }
+        
+        .waves .w3 {
+            /* background-color: rgba(255, 174, 0, 0.8); */
+            background-color: rgba(192, 192, 192, 0.85);
+            width: 505px;
+            height: 455px;
+            top: 50%;
+            left: -82px;
+            /* width: 543px;
+    height: 515px;
+    top: 48%;
+    left: -100px; */
+            border: 0.4px solid rgba(180, 180, 180, 0.979);
+            animation: wave1 2s linear infinite;
+        }
+        
+        .container {
+            position: relative;
+            background-color: rgb(2, 117, 184);
+            width: 340px;
+            height: 500px;
+            margin: auto;
+            margin-top: 100px;
+            text-align: center;
+            border-radius: 10px;
+            z-index: 1;
+            box-shadow: rgb(2 82 128 / 40%) 0px 0px 20px inset, #00000099 0px 0px 20px 4px;
+            overflow: hidden;
+        }
+        
+        .weatherIcon {
+            height: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .weatherIcon .material-icons {
+            font-size: 4.5rem;
+            animation: zoom 3000ms infinite linear;
+            text-shadow: 0px 0px 12px rgb(255 174 0 / 99%);
+            color: rgba(255, 174, 0, 0.993);
+            position: "absolute";
+            top: "60px";
+            left: "56%";
+        }
+        
+        .box {
+            height: 50%;
+        }
+        
+        .flex-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+        
+        .box1 {
+            height: 100px;
+            z-index: 12;
+        }
+        
+        .place,
+        .temp {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        
+        .box2 {
+            height: 100px;
+            z-index: 12;
+        }
+        
+        .date,
+        .temp_min_max {
+            color: rgb(70, 69, 69);
+        }
+        
+        @keyframes wave1 {
+            0% {
+                width: 505px;
+                height: 455px;
+                top: 50%;
+                left: -82px;
+            }
+            50% {
+                width: 543px;
+                height: 515px;
+                top: 48%;
+                left: -100px;
+            }
+        }
+        
+        @keyframes wave2 {
+            0% {
+                width: 543px;
+                height: 515px;
+                top: 48%;
+                left: -100px;
+            }
+            50% {
+                width: 550px;
+                height: 520px;
+                top: 46.6%;
+                left: -103px;
+            }
+        }
+        
+        @keyframes wave3 {
+            0% {
+                width: 550px;
+                height: 520px;
+                top: 46.6%;
+                left: -103px;
+            }
+            50% {
+                width: 554px;
+                height: 524px;
+                top: 45.6%;
+                left: -105px;
+            }
+        }
+        
+        @keyframes zoom {
+            0% {
+                font-size: 4.5rem;
+            }
+            50% {
+                font-size: 5.5rem;
+            }
+        }
+        
+        @keyframes opacity {
+            0% {
+                filter: opacity(0.8);
+                left: 0%;
+                /* filter: brightness(0.8); */
+            }
+            50% {
+                filter: opacity(1);
+                filter: brightness(0.8);
+            }
+            100% {
+                left: 20%;
+                filter: brightness(0.8);
+                /* filter: brightness(0.8); */
+            }
+        }
+        
+        #cloudImg {
+            display: none;
+            width: 195px;
+            position: absolute;
+            animation: opacity 6s infinite alternate-reverse;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="weatherIcon">
+            <span class="material-icons">
+                wb_sunny
+                    <!-- filter_drama -->
+            </span>
+            <!-- <img src="cloud img.png" alt=""> -->
+            <img id="cloudImg" src="cloud2.png" alt="error">
+
+        </div>
+        <div class="waves">
+            <div class="wave w1"></div>
+            <div class="wave w2"></div>
+            <div class="wave w3"></div>
+        </div>
+        <div class="box flex-box">
+            <div class="box1 flex-box">
+                <div class="place">
+                    {%place%},{%country%}
+                </div>
+                <p class="date">29 AUG | SUN | 11:15 AM</p>
+            </div>
+            <div class="box2 flex-box">
+                <div class="temp">{%temp%} &deg;C</div>
+                <p class="temp_min_max">Min {%tempmin%} &deg;C | Max {%tempmax%} &deg;C</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        const date = document.getElementsByClassName("date")[0];
+        const monthArr = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+        const dayArr = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+
+        const todaysDate = new Date();
+        let dt = todaysDate.getDate()
+        let month = monthArr[todaysDate.getMonth()];
+        let day = dayArr[todaysDate.getDay()]
+        let hours = todaysDate.getHours()
+        let mins = todaysDate.getMinutes()
+        let greeting = "AM";
+        if (hours > 11) {
+            greeting = "PM"
+            hours -= 12
+        }
+        console.log(`${dt} ${month} | ${day} | ${hours}:${mins} ${greeting}`)
+        date.innerHTML = `${dt} ${month} | ${day} | ${hours}:${mins} ${greeting}`;
+
+
+
+        const sun = document.getElementsByClassName("material-icons")[0]
+        const cloudImg = document.getElementById("cloudImg")
+            // const weather = "{%weather%}"
+        const weather = "Clouds"
+        if (weather == "Rain" || weather == "Clouds") {
+            sun.style.cssText = `
+                position: absolute;
+                top: 60px;
+                left:56%;
+            `
+            cloudImg.style.display = 'block'
+        }
+
+        // API LINK :
+        // api.openweathermap.org/data/2.5/weather?q=pune&appid=b84157cbb18b0a296952e1331c074ca6
+    </script>
+</body>
+
+</html>
